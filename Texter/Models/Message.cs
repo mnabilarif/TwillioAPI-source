@@ -45,15 +45,16 @@ namespace Texter.Models
 
         public void Send()
         {
-            var client = new RestClient("https://api.twilio.com/2010-04-01");
+            var client = new RestClient("https://api.twilio.com/2010-04-01/");
             var request = new RestRequest("Accounts/" + EnvironmentVariables.AccountSid + "/Messages", Method.POST);
             request.AddParameter("To", To);
-            request.AddParameter("From", "+19802383582");
+            //nabeel twillio
+            request.AddParameter("From", "+13853964753");
             request.AddParameter("Body", Body);
             client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.AccountSid, EnvironmentVariables.AuthToken);
             client.ExecuteAsync(request, response =>
             {
-                Console.WriteLine(response.Content);
+                Console.WriteLine("some error:while sending "+response.Content);
             });
         }
 
