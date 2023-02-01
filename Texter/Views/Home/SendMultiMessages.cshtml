@@ -1,0 +1,32 @@
+﻿@model Texter.ViewModels.GroupMessagesModel
+
+<!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  </head>
+  <body>
+            <h2>Send multi messages</h2>
+            <hr />
+            @using (Html.BeginForm())
+            {   
+		        @Html.LabelFor(model => model.Message.To)
+		        @foreach(var item in @ViewBag.To)
+        		{
+		            
+        		    <input name="To" type="checkbox" value= "item.Number">@item.Name
+        		}
+		<br>
+  
+                @Html.LabelFor(model => model.Message.From)
+                @Html.TextBoxFor(model => model.Message.From)
+                @Html.LabelFor(model => model.Message.Body)
+                @Html.TextBoxFor(model => model.Message.Body)
+                <input type="submit" value="Send!" />
+            }
+
+        <br>
+        @Html.ActionLink("Back home", "Index")
+  </body>
+</html>
+

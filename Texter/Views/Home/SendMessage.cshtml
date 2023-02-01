@@ -1,0 +1,26 @@
+﻿@model Texter.Models.Message
+
+<!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  </head>
+  <body>
+            <h2>Send a new message</h2>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.LabelFor(model => model.To)
+                @Html.DropDownList("To")
+                @Html.LabelFor(model => model.From)
+                @Html.TextBoxFor(model => model.From)
+                @Html.LabelFor(model => model.Body)
+                @Html.TextBoxFor(model => model.Body)
+                <input type="submit" value="Send!" />
+            }
+
+		<br>
+		@Html.ActionLink("Back home", "Index")
+  </body>
+</html>
+
